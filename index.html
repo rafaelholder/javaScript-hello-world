@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOcumento pica</title>
+</head>
+
+
+<body>
+    <script>
+
+        //alert('oi');
+
+        let familia = [20, 20, 'duda', 'rafael', 3.14]
+        var duda = {
+            nome: 'Dudosa',
+            idade: 20    
+        };
+
+        function resetIdade(idade){
+            duda.idade = idade;
+        }
+            
+        console.log(duda.nome, duda.idade);
+        console.log(familia[2]);
+        resetIdade(12);
+        console.log(duda.idade);
+        
+        // Operador === confere se os valores e os tipos são iguais
+        console.log('1' === 1);
+
+        //Operador ternario, evita if else gigantes. ?(if) :(else) 
+        let pontos = 200;
+        let tipo = pontos > 100 ? 'premium' : 'normal';
+        console.log(tipo);
+
+        switch(tipo){
+            case 'normal': 
+                console.log("usuario comum");
+                break;
+            case 'premium': 
+                console.log('usuario premium');
+                break;
+            default:
+                console.log('erro');
+                break;
+        }
+            
+        //Falsy.
+        // Valores que são undefined, null, 0, false, ''(vazio), NaN - not a number
+
+
+
+        //Truthy. 
+        // Todos os outros valores que não são falsy
+
+        let corPersonalizada = 'azul';
+        let corPadrao = 'rosa';
+        //Comparação logica ||(or, ou) para de procurar valores truthy ao encontrar um deles
+        console.log(corPersonalizada || corPadrao);
+
+        for(let i = 0; i <= 5; i++){
+            if(i % 2 !== 0){
+                console.log(i);
+            }
+        }
+
+        //For In: melhor loop para objetos e arrays
+        const pessoa = {
+            nome: 'rafael',
+            idade: 10
+        };
+
+        for(let chave in pessoa){
+            console.log(chave, pessoa[chave]);
+        };
+
+
+        function maiorEntreDois(valorA , valorB) {
+           return valorA > valorB ? valorA : valorB;
+        }
+        let maior = maiorEntreDois(10, 12);
+        console.log(maior);
+
+
+        //FizzBuzz
+
+
+
+
+        const resultado = fizzBuzz(15);
+        console.log(resultado);
+
+        function fizzBuzz(entrada){
+            if(typeof entrada !== 'number')
+                return 'Não é um número';
+            if((entrada % 3 === 0) && (entrada % 5 === 0))
+                return 'FizzBuzz';
+            if(entrada % 3 === 0)
+                return 'Fizz';
+            if(entrada % 5 == 0)
+                return 'Buzz';
+        }
+
+
+        //Verificador de velocidade do detran
+        // Velocidade max = 70
+        // a cada 5km a mais = 1 ponto
+        // Math.floor()
+        // pontos > 12 = carteira suspensa
+
+        verificarVelo(81);
+
+        function verificarVelo(velocidade){
+            const velocidadeMax = 70;
+            const kmPorPonto = 5;
+            if(velocidade <= velocidadeMax){
+                console.log('ok');
+            }
+            else {
+                const pontos = Math.floor((velocidade - velocidadeMax) / kmPorPonto);
+                if(pontos >= 12){
+                    console.log('Carteira suspensa. Pontos: ', pontos);
+                }
+                else {
+                    console.log('Pontos: ', pontos);
+                }
+            }
+        }
+
+        //Par ou impar
+
+        ParImpar(10);
+
+        function ParImpar(valores){
+
+
+            for(let i = 0; i <= valores; i++){
+                if(i % 2 == 0){
+                    console.log(i, 'PAR');
+                }
+                else{
+                    console.log(i, 'IMPAR');
+                }
+            }
+        }
+
+        //Exibir propiedades de um obj;
+
+        const filme = {
+            titulo: 'Crepusculo',
+            ano: 2009,
+            diretor: 'Fanfic',
+            personagem: 'Edward',
+        }
+
+        exibirProps(filme);
+        function exibirProps(obj){
+            for(prop in obj)
+                if(typeof prop === 'string')
+                    console.log(prop, obj[prop]);
+        }
+
+        //SOma
+
+        somar(10);
+        function somar(limite){
+            let total = 0;
+            for(i = 0; i <= 10; i++){
+                if(i % 3 === 0) {
+                    total = i + total;
+                }
+                else if(i % 5 === 0){
+                    total = i + total;
+                }
+            }
+            console.log('Total é: ',  total)
+        }
+
+        //Contador de asteriscos
+
+        exibitAsteri(10);
+
+        function exibitAsteri(linhas){
+            for(let linha = 1; linha <= linhas; linha++){ 
+                let padrao = '';
+                for(let linha = 0; linha < linhas; linha++){
+                    padrao += '*';
+                }
+                console.log(padrao);
+            }
+        }
+
+        //Numeros primos
+
+        exibirPrimos(15);
+        function exibirPrimos(limite){
+           
+            for(let numero = 2; numero <= limite; numero++){
+                let ehPrimo = true;
+
+                for(let divisor = 2; divisor < numero; divisor++){
+                    if(numero % divisor === 0){
+                        ehPrimo = false;
+                        break;
+                    }
+                }
+
+                if(ehPrimo) console.log(numero);
+            }
+        }
+
+
+        
+        /*
+        //Factory functions
+        function CriarCelular(marcaCelular, tamanhoTela, capacidadeBateria){
+            return  {
+                marcaCelular,
+                tamanhoTela,
+                capacidadeBateria,
+                ligar (){
+                    console.log('fazendo ligação');
+                }
+            }
+        }
+
+        const celular1 = CriarCelular('Zenfone', 5.5, 8000);
+        console.log(celular1);
+        */
+
+        //Pascalcase - UmDoisTresQuatroCinco
+        function Celular(marcaCelular, tamanhoTela, capacidadeBateria){
+            this.marcaCelular = marcaCelular,
+            this.tamanhoTela = tamanhoTela,
+            this.capacidadeBateria = capacidadeBateria,
+            this.ligar = function(){
+                console.log('ligando');
+            }
+        }
+        const celularDois = new Celular('asus', 5.7, 9000);
+        console.log(celularDois);
+
+        //Natureza dinamica de objetos
+        const teclado = {
+            cor : 'rosa',
+            marca : 'redragon'
+
+        }
+        teclado.cor = 'branco';
+        teclado.trocarCor = function() {
+            console.log('mudando cor');
+        }
+        delete teclado.led;
+        console.log(teclado);
+
+
+        //Clonar objetos
+
+        const novoCelular = Object.assign({
+            marcaCelular: 'apple'
+        }, celularDois);
+        console.log(novoCelular);
+
+        //Math
+
+        let aleatorio = Math.random();
+        let max = Math.max(123450 - 109876);
+        console.log(aleatorio, max);
+        
+        //Template literal. Templete =  ``. pode usar as ' ' dentro de uma string sem precisar da \
+        const nome = 'Rafael';
+        const email = 
+        `
+        olá ${nome}
+        essa é a 'primeira mensagem'.
+        
+        essa é a segunda.
+        `;
+        console.log(email);
+
+        //Dates
+
+        const dataUm = new Date();
+        const dataDois = new Date('April 19 2002 00:00');
+        const dataTres = new Date(2019, 02, 06, 9, 30);
+
+        console.log(dataUm);
+
+
+        //Montador de endereço
+
+        function endereco (rua, cidade, cep) {
+           return { 
+                rua,
+                cidade,
+                cep
+            }
+        }
+        const casa = new endereco('rua são francisco', 'jaboatão', 54420110);
+        console.log(casa);
+
+        const endereco2 = new endereco('a', 'b', 51);
+        const endereco3 = new endereco('a', 'b', 51);
+
+        function saoIguais(endereco1, endereco2){
+            return  endereco2.rua === endereco3.rua &&
+                    endereco2.cidade === endereco3.cidade &&
+                    endereco2.cep === endereco3.cep;
+        }
+
+        //Postagem
+
+        function postagem (titulo, mensagem, autor, vizualizacoes, comentarios = [{}], aoVivo){
+            return{
+                titulo, 
+                mensagem, 
+                autor, 
+                vizualizacoes, 
+                comentarios, 
+                aoVivo
+            }
+        }
+        const post = new postagem('Post 1', 'Este é o post 1', 'Rafael');
+
+
+        //ARRAYS
+
+        const numeros = [1, 2, 3];
+
+        //INICIO
+        numeros.unshift(5);
+        console.log(numeros);
+
+        //MEIO
+        numeros.splice(1,0,'o');
+        console.log(numeros);
+
+        //FIM
+        numeros.push(7);
+        console.log(numeros);
+        
+
+        //Verificar itens do array
+        const numbers = [10, 23, 45, 632, 1];
+        console.log(numbers.includes(10));
+
+        //REMOVER ITENS DO ARRAY
+        
+        const ultimo = numbers.pop();
+        console.log(ultimo, numbers);
+
+        const primeiro = numbers.shift();
+        console.log(primeiro, numbers);
+
+        const meio = numbers.splice(2, 1);
+        console.log(meio, numbers);
+
+        //COMBINANDO E DIVIDINDO ARRAYS
+
+        //const fisrt = [{id:1, id: 2, id: 3}];
+        const fisrt = [1, 2, 3];
+        const second = [ 4, 5, 6];
+        //fisrt[0].id = 10;
+
+        //COMBINAR
+        const combinado = fisrt.concat(second);
+        console.log(combinado);
+
+        //DIVIDIR
+        const dividido = combinado.slice();
+        console.log(dividido);
+
+
+        //ESVAZIANDO UM ARRAY
+        numbers.length = 0;
+        console.log(numbers);
+        
+        numeros.splice( 0, numeros.length)
+        console.log(numeros);
+        
+
+        //INPUT
+
+       let numeroFavorito = prompt('Qual o seu numero preferido?');
+       console.log(numeroFavorito);
+
+        if(numeroFavorito == 22)
+            alert('Taokei');
+        else if(numeroFavorito == 13)
+            alert('Campanheiro');
+
+
+        //MANIPULAR O DOM
+        //DOM é todo o html, css, javascript da pagina web
+        
+        </script>
+</body>
+</html>
